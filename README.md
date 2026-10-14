@@ -1,5 +1,7 @@
 # TiendaSonidoVivoV2
 Tienda Sonido Vivo Versión 2
+PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran entregas atrasadas.
+
 
 # Páginas:
   - Index (Inicio)
