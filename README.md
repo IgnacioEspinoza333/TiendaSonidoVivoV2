@@ -21,6 +21,8 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
       - *Falta Migrar*
   - Carrito de Compras (Resumen de pago / Checkout).
       - *Falta Migrar*
+  - ERROR 404
+      - *Falta Migrar*
 
 # Páginas a arreglar:
   - Login/Registro: Arreglar Validación de formularios
