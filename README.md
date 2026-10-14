@@ -7,15 +7,15 @@ Tienda Sonido Vivo Versión 2
   - Productos
       - *Falta Migrar*
   - Producto
-        - *Falta Migrar*
+      - *Falta Migrar*
   - Login
-        - *Falta Migrar*
+      - *Falta Migrar*
   - Registro
-        - *Falta Migrar*
+      - *Falta Migrar*
   - Mi Perfil
-        - *Falta Migrar*
+      - *Falta Migrar*
   - Panel de Control (Admin)
-        - *Falta Migrar*
+      - *Falta Migrar*
   - Carrito de Compras (Resumen de pago / Checkout).
       - *Falta Migrar*
 
