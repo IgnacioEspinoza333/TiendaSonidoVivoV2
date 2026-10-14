@@ -19,6 +19,10 @@ Tienda Sonido Vivo Versión 2
   - Carrito de Compras (Resumen de pago / Checkout).
       - *Falta Migrar*
 
+# Páginas a arreglar:
+  - Login/Registro: Arreglar Validación de formularios
+
+  - Pago: Debo integrarlo en Carrito de compras
 
 ------------------
 
