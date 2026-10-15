@@ -6,11 +6,11 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
 
 # Páginas:
   - Index (Inicio)
-      - *Falta Migrar*
+      - *Migración lista*
   - Productos
-      - *Falta Migrar*
+      - *Migración lista*
   - Producto
-      - *Falta Migrar*
+      - *Migración lista*
   - Login
       - *Falta Migrar*
   - Registro
@@ -20,7 +20,8 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Panel de Control (Admin)
       - *Falta Migrar*
   - Carrito de Compras (Resumen de pago / Checkout).
-      - *Falta Migrar*
+      - *Migración lista*
+      - *Falta Checkout*
   - ERROR 404
       - *Falta Migrar*
 
