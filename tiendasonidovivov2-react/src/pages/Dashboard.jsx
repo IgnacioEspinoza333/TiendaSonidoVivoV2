@@ -1,3 +1,40 @@
+import { useAuth } from '../context/AuthContext';
+import { useProducts } from '../context/ProductsContext';
+import ProductForm from '../components/organisms/ProductForm';
+import ProductTable from '../components/organisms/ProductTable';
+import '../styles/estilosindex.css';
+import '../styles/estiloscompra.css';
+import '../styles/estiloslogin.css';
+import '../styles/estilospanel.css';
+
 export default function Dashboard() {
-  return <h1 style={{ color: '#fff', padding: '3rem' }}>Panel de Control (en construcción)</h1>;
+  const { usuario } = useAuth();
+  const { productos, agregarProducto, eliminarProducto } = useProducts();
+
+  const confirmarEliminar = (producto) => {
+    if (window.confirm(`¿Eliminar "${producto.nombre}" del catálogo?`)) {
+      eliminarProducto(producto.id);
+    }
+  };
+
+  return (
+    <section id="contenido-panel">
+      <h2>Panel de Control</h2>
+      <p className="panel-subtitulo">
+        Hola, {usuario.nombre}. Los productos que agregues aquí se guardan solo mientras la página esté abierta.
+      </p>
+
+      <div className="panel-layout">
+        <div className="panel-tarjeta">
+          <h3>Nuevo producto</h3>
+          <ProductForm onCrear={agregarProducto} />
+        </div>
+
+        <div className="panel-tarjeta">
+          <h3>Catálogo actual <span className="panel-contador">({productos.length})</span></h3>
+          <ProductTable productos={productos} onEliminar={confirmarEliminar} />
+        </div>
+      </div>
+    </section>
+  );
 }

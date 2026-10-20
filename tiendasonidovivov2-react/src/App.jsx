@@ -15,36 +15,39 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+import { ProductsProvider } from './context/ProductsContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 
 function App() {
   return (
-    // Los providers envuelven toda la estructura para que Header y Rutas accedan a sesión y carrito
+    // Los providers envuelven toda la estructura para que Header y Rutas accedan a sesión, productos y carrito
     <AuthProvider>
-      <CartProvider>
-        <Header />
+      <ProductsProvider>
+        <CartProvider>
+          <Header />
 
-        <main id="contenido">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<Catalog />} />
-            <Route path="/producto/:id" element={<ProductDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Register />} />
-            <Route path="/carrito" element={<CartAndCheckout />} />
+          <main id="contenido">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/productos" element={<Catalog />} />
+              <Route path="/producto/:id" element={<ProductDetail />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Register />} />
+              <Route path="/carrito" element={<CartAndCheckout />} />
 
-            {/* Rutas privadas: exigen sesión iniciada */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/perfil" element={<Profile />} />
-              <Route path="/panel" element={<Dashboard />} />
-            </Route>
+              {/* Rutas privadas: exigen sesión iniciada */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/perfil" element={<Profile />} />
+                <Route path="/panel" element={<Dashboard />} />
+              </Route>
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-        <Footer />
-      </CartProvider>
+          <Footer />
+        </CartProvider>
+      </ProductsProvider>
     </AuthProvider>
   );
 }

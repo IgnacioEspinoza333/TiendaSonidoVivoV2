@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { productsData } from '../data/products';
 import '../styles/estilosproducto.css';
-
+import { useProducts } from '../context/ProductsContext';
+import { precioANumero } from '../utils/productUtils';
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { agregarAlCarrito } = useCart();
 
-  const producto = productsData.find((p) => p.id === parseInt(id));
-
+  const { productos } = useProducts();
+  const producto = productos.find((p) => p.id === parseInt(id));
   const [cantidad, setCantidad] = useState(1);
   const [pestañaActiva, setPestañaActiva] = useState('detalles');
   const [mensajeWsp, setMensajeWsp] = useState(false);
@@ -27,7 +27,7 @@ export default function ProductDetail() {
   }
 
   // Lógica de cálculo
-  const precioNumerico = Number(producto.precio.toString().replace('.', ''));
+    const precioNumerico = precioANumero(producto.precio);
   const totalCalculado = (precioNumerico * cantidad).toLocaleString('es-CL');
 
   // Funciones de acción

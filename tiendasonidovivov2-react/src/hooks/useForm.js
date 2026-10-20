@@ -19,5 +19,11 @@ export default function useForm(valoresIniciales, validar) {
     if (Object.keys(validar(values)).length === 0) onValid(values);
   };
 
-  return { values, errors, enviado, handleChange, handleSubmit };
+  // Deja el formulario como nuevo (valores iniciales y sin errores)
+  const reset = () => {
+    setValues(valoresIniciales);
+    setEnviado(false);
+  };
+
+  return { values, errors, enviado, handleChange, handleSubmit, reset };
 }

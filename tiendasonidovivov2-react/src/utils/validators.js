@@ -94,3 +94,33 @@ export const validarCheckout = (v) =>
       : {}),
     fdepago: v.fdepago ? '' : 'Selecciona una forma de pago',
   }); 
+
+/* --------------------------------------------------------------------
+   Validaciones del panel de control (productos)
+   -------------------------------------------------------------------- */
+export const validarNombreProducto = (valor = '') =>
+  valor.trim().length >= 3 ? '' : 'El nombre debe tener al menos 3 caracteres';
+
+export const validarMarca = (valor = '') =>
+  valor.trim().length >= 2 ? '' : 'Ingresa la marca del producto';
+
+export const validarPrecio = (valor = '') =>
+  /^\d+$/.test(String(valor).trim()) && Number(valor) > 0
+    ? ''
+    : 'Ingresa un precio válido (solo números, mayor a 0)';
+
+export const validarStock = (valor = '') =>
+  /^\d+$/.test(String(valor).trim()) ? '' : 'Ingresa un stock válido (número entero, 0 o más)';
+
+export const validarDescripcion = (valor = '') =>
+  valor.trim().length >= 10 ? '' : 'La descripción debe tener al menos 10 caracteres';
+
+export const validarProducto = (v) =>
+  soloErrores({
+    nombre: validarNombreProducto(v.nombre),
+    categoria: validarSeleccion(v.categoria, 'una categoría'),
+    marca: validarMarca(v.marca),
+    precio: validarPrecio(v.precio),
+    stock: validarStock(v.stock),
+    descripcion: validarDescripcion(v.descripcion),
+  });

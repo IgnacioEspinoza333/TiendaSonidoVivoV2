@@ -39,3 +39,18 @@ export const REGIONES = [
   'Aysén',
   'Magallanes y de la Antártica Chilena',
 ];
+
+// Opciones del panel de control y del catálogo
+export const CATEGORIAS = ['Guitarras', 'Bajos', 'Teclados', 'Baterías', 'Audio'];
+
+// Imagen genérica para productos creados desde el panel (no se suben archivos reales)
+export const IMAGEN_POR_DEFECTO = '/img/musica.jfif';
+
+// Filtros del catálogo: cada botón puede agrupar varias categorías
+export const FILTROS_CATALOGO = [
+  { valor: 'todos', etiqueta: 'Todos', categorias: null },
+  { valor: 'guitarras', etiqueta: 'Guitarras y Bajos', categorias: ['guitarras', 'bajos'] },
+  { valor: 'teclados', etiqueta: 'Teclados', categorias: ['teclados'] },
+  { valor: 'baterias', etiqueta: 'Baterías', categorias: ['baterias'] },
+  { valor: 'audio', etiqueta: 'Audio y Amplificación', categorias: ['audio'] },
+];
