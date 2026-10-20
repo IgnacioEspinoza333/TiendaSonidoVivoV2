@@ -1,3 +1,3 @@
 export default function Profile() {
-  return <h1>Página de Inicio</h1>;
+  return <h1 style={{ color: '#fff', padding: '3rem' }}>Mi Perfil (en construcción)</h1>;
 }

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function AuthButtons({ isLogged = false, userName = '' }) {
+export default function AuthButtons({ isLogged = false, userName = '', onLogout }) {
   return (
     <div className="menu-auth-nav">
       {!isLogged ? (
@@ -11,7 +11,7 @@ export default function AuthButtons({ isLogged = false, userName = '' }) {
       ) : (
         <div id="nav-usuario" className="nav-estado-sesion">
           <span id="nav-nombre-usuario">Hola, {userName}</span>
-          <button id="btn-cerrar-sesion" className="btn-nav-logout">Cerrar Sesión</button>
+          <button id="btn-cerrar-sesion" className="btn-nav-logout" onClick={onLogout}>Cerrar Sesión</button>
         </div>
       )}
     </div>

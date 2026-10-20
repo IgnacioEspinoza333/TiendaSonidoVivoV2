@@ -1,10 +1,18 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import NavLink from '../atoms/NavLink';
 import AuthButtons from '../molecules/AuthButtons';
 
 export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const navigate = useNavigate();
+  const { usuario, estaAutenticado, cerrarSesion } = useAuth();
+
+  const handleLogout = () => {
+    cerrarSesion();
+    navigate('/');
+  };
 
   return (
     <header id="encabezado">
@@ -23,7 +31,7 @@ export default function Header() {
           <ul>
             <NavLink to="/">Inicio</NavLink>
             <NavLink to="/productos">Catálogo</NavLink>
-            
+
             {/* Renderizado condicional del menú según la ruta actual */}
             {isHome ? (
               <>
@@ -33,10 +41,18 @@ export default function Header() {
             ) : (
               <NavLink to="/carrito">Carrito</NavLink>
             )}
+
+            {/* Enlaces visibles solo con sesión iniciada */}
+            {estaAutenticado && (
+              <>
+                <NavLink to="/perfil">Mi Perfil</NavLink>
+                <NavLink to="/panel">Panel</NavLink>
+              </>
+            )}
           </ul>
         </nav>
 
-        <AuthButtons />
+        <AuthButtons isLogged={estaAutenticado} userName={usuario?.usuario} onLogout={handleLogout} />
       </div>
     </header>
   );
