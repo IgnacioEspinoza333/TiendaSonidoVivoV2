@@ -22,16 +22,16 @@ export function CartProvider({ children }) {
     setCarrito((prevCarrito) => {
       const itemExistente = prevCarrito.find((item) => item.id === producto.id);
       if (itemExistente) {
-        return prevCarrito.map((item) => 
+        return prevCarrito.map((item) =>
           item.id === producto.id ? { ...item, cantidad: item.cantidad + cantidad } : item
         );
       }
-      return [...prevCarrito, { 
-        id: producto.id, 
-        nombre: producto.nombre, 
-        precio: Number(producto.precio.toString().replace('.', '')), // Aseguramos formato numérico
-        imagen: producto.imagen, 
-        cantidad 
+      return [...prevCarrito, {
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: Number(producto.precio.toString().replace(/\./g, '')), // Aseguramos formato numérico
+        imagen: producto.imagen,
+        cantidad
       }];
     });
     alert(`¡Se agregaron ${cantidad} unidad(es) de "${producto.nombre}" al carrito!`);
@@ -46,14 +46,18 @@ export function CartProvider({ children }) {
     setCarrito((prev) => prev.filter((item) => item.id !== id));
   };
 
+  // Vacía el carrito pidiendo confirmación (botón "Vaciar Carrito")
   const vaciarCarrito = () => {
     if (window.confirm('¿Estás seguro de que deseas vaciar todo el carrito?')) {
       setCarrito([]);
     }
   };
 
+  // Vacía el carrito sin preguntar (se usa al confirmar una compra)
+  const limpiarCarrito = () => setCarrito([]);
+
   return (
-    <CartContext.Provider value={{ carrito, agregarAlCarrito, actualizarCantidad, eliminarProducto, vaciarCarrito }}>
+    <CartContext.Provider value={{ carrito, agregarAlCarrito, actualizarCantidad, eliminarProducto, vaciarCarrito, limpiarCarrito }}>
       {children}
     </CartContext.Provider>
   );

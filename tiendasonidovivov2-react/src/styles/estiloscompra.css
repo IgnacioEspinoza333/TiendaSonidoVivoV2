@@ -173,8 +173,8 @@ input.valido {
 }
 
 /* Mensaje mostrado cuando el carrito está vacío */
-#carrito-vacio-msg {
-    display: none;
+#carrito-vacio-msg,
+.carrito-vacio-bloque {
     padding: 3rem 0;
     text-align: center;
 }
@@ -262,4 +262,83 @@ input.valido {
     text-decoration: none;
     margin-left: 10px;
     display: inline-block;
+}
+
+/* ==========================================================================
+   Adaptaciones para React (reemplazan estilos inline del HTML original)
+   ========================================================================== */
+.input-cantidad {
+    width: 60px;
+    padding: 0.4rem;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+.acciones-derecha {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* El botón "Proceder al pago" y "Volver" ahora son <button>, no <a> */
+button.btn-proceder-pago {
+    border: none;
+    cursor: pointer;
+    margin-left: 0;
+}
+button.btn-secundario-caja {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+}
+.btn-volver {
+    margin-bottom: 1.5rem;
+}
+
+/* Resumen de la orden */
+.lista-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.resumen-nombre {
+    margin: 0;
+    font-size: 0.95rem;
+}
+.resumen-detalle {
+    margin: 2px 0;
+}
+.resumen-subtotal {
+    margin: 0;
+}
+.separador-resumen {
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid #333;
+}
+.total-resumen {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Radios de React Bootstrap alineados como en el diseño original */
+.lista-pago .form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lista-pago .form-check label {
+    margin: 0;
+}
+
+/* Pantalla de pago exitoso */
+.confirmacion-compra {
+    text-align: center;
+    padding: 3rem 1rem;
 }
