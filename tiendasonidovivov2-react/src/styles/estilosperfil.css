@@ -1,0 +1,157 @@
+/* ==========================================================================
+   MI PERFIL y PÁGINA 404
+   ========================================================================== */
+
+/* ---------- Mi Perfil ---------- */
+#contenido-perfil {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    color: var(--color-texto, #e0e0e0);
+}
+
+.perfil-subtitulo {
+    color: var(--color-texto-atenuado, #a0a0a0);
+    margin-bottom: 2rem;
+}
+
+.tarjeta-perfil {
+    background: var(--color-superficie, #1e1e1e);
+    border: 1px solid var(--color-borde, #333);
+    border-radius: 10px;
+    padding: 2rem;
+}
+
+.perfil-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-borde, #333);
+}
+
+.avatar-perfil {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-primario, #d32f2f);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fuente-titulo, 'Montserrat', sans-serif);
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.perfil-nombre {
+    margin: 0 0 0.2rem;
+    color: #fff;
+    font-size: 1.4rem;
+}
+.perfil-usuario {
+    margin: 0 0 0.6rem;
+    color: var(--color-texto-atenuado, #a0a0a0);
+}
+
+.insignia {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.insignia-admin {
+    background: rgba(211, 47, 47, 0.2);
+    color: #ff6b6b;
+    border: 1px solid var(--color-primario, #d32f2f);
+}
+.insignia-cliente {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+/* Datos en dos columnas (una en móvil) */
+.grid-perfil {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem 2rem;
+    margin: 0 0 2rem;
+}
+.campo-perfil-etiqueta {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-texto-atenuado, #a0a0a0);
+    margin-bottom: 0.2rem;
+}
+.campo-perfil-valor {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.acciones-perfil {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-borde, #333);
+}
+
+@media (max-width: 600px) {
+    .tarjeta-perfil {
+        padding: 1.5rem 1.2rem;
+    }
+    .perfil-cabecera {
+        flex-direction: column;
+        text-align: center;
+    }
+    .grid-perfil {
+        grid-template-columns: 1fr;
+    }
+    .acciones-perfil > * {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ---------- Estado de error (404) ---------- */
+#contenido-error {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+.estado-error {
+    text-align: center;
+}
+.estado-error-codigo {
+    display: block;
+    font-family: var(--fuente-titulo, 'Montserrat', sans-serif);
+    font-size: clamp(5rem, 22vw, 9rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-primario, #d32f2f);
+    text-shadow: 0 0 30px rgba(211, 47, 47, 0.35);
+}
+.estado-error h2 {
+    border-bottom: none;
+    margin-top: 1rem;
+}
+.estado-error-mensaje {
+    color: var(--color-texto-atenuado, #a0a0a0);
+    margin: 0 auto 2rem;
+    max-width: 500px;
+    word-break: break-word;
+}
+.estado-error-acciones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}

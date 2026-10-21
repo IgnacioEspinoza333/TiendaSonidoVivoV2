@@ -1,3 +1,14 @@
+import ProfileCard from '../components/organisms/ProfileCard';
+import '../styles/estilosindex.css';
+import '../styles/estiloscompra.css';
+import '../styles/estilosperfil.css';
+
 export default function Profile() {
-  return <h1 style={{ color: '#fff', padding: '3rem' }}>Mi Perfil (en construcción)</h1>;
+  return (
+    <section id="contenido-perfil">
+      <h2>Mi Perfil</h2>
+      <p className="perfil-subtitulo">Estos son los datos de tu cuenta en Sonido Vivo.</p>
+      <ProfileCard />
+    </section>
+  );
 }
