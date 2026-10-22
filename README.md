@@ -4,7 +4,7 @@ Tienda Sonido Vivo Versión 2
 PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran entregas atrasadas.
 
 
-# Páginas:
+# Páginas (Faltan 2):
   - Index (Inicio)
       - *Migración lista*
   - Productos
@@ -12,23 +12,17 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Producto
       - *Migración lista*
   - Login
-      - *Falta Migrar*
+      - *Migración lista*
   - Registro
-      - *Falta Migrar*
+      - *Migración lista*
   - Mi Perfil
       - *Falta Migrar*
   - Panel de Control (Admin)
-      - *Falta Migrar*
+      - *Migración lista*
   - Carrito de Compras (Resumen de pago / Checkout).
       - *Migración lista*
-      - *Falta Checkout*
   - ERROR 404
-      - *Falta Migrar*
-
-# Páginas a arreglar:
-  - Login/Registro: Arreglar Validación de formularios
-
-  - Pago: Debo integrarlo en Carrito de compras
+      - *Migración lista*
 
 ------------------
 
