@@ -32,7 +32,7 @@ Listo:
 
 Falta
   - claro/oscuro
-  - agregar a favoritos
+  - agregar a favoritos (que salgan al principio del catalogo)
 
 ------------------
 
