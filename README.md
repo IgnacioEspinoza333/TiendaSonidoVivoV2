@@ -19,6 +19,21 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Carrito de Compras (Resumen de pago / Checkout).
   - ERROR 404
 
+
+#Cosas a Agregar
+
+Funcionalidades interactivas: Incorporar al menos 4 características distintas y funcionales que usen estados:
+
+(ej. alternancia de tema claro/oscuro, carrito de compras, filtrado dinámico, agregar a favoritos, etc).
+
+Listo:
+  - carrito de compras
+  - filtrado dinámico
+
+Falta
+  - claro/oscuro
+  - agregar a favoritos
+
 ------------------
 
 # Instruccioes de la Evaluación:
