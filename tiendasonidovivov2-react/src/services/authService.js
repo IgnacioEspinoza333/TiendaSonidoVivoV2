@@ -68,9 +68,11 @@ export function registrarUsuario(datos) {
 
   const nuevo = {
     nombre: datos.nombre.trim(),
+    apellido: (datos.apellido || '').trim(),
     rut: datos.rut.trim(),
     usuario: datos.usuario.trim(),
     email: datos.email.trim().toLowerCase(),
+    fechaNacimiento: datos.fechaNacimiento || '',
     password: datos.password.trim(),
     instrumento: datos.instrumento,
     nivel: datos.nivel,

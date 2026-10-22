@@ -4,6 +4,7 @@ import { useCart } from '../../context/CartContext';
 import { contarUnidades } from '../../utils/cartUtils';
 import ProfileHeader from '../molecules/ProfileHeader';
 import ProfileField from '../molecules/ProfileField';
+import { nombreCompleto, formatearFecha } from '../../utils/userUtils';
 
 // Tarjeta con los datos del usuario que inició sesión y accesos rápidos
 export default function ProfileCard() {
@@ -21,12 +22,11 @@ export default function ProfileCard() {
       <ProfileHeader usuario={usuario} />
 
       <dl className="grid-perfil">
-        <ProfileField etiqueta="Nombre completo" valor={usuario.nombre} />
+        <ProfileField etiqueta="Nombre completo" valor={nombreCompleto(usuario)} />
         <ProfileField etiqueta="RUT" valor={usuario.rut} />
         <ProfileField etiqueta="Nombre de usuario" valor={usuario.usuario} />
         <ProfileField etiqueta="Correo electrónico" valor={usuario.email} />
-        <ProfileField etiqueta="Instrumento principal" valor={usuario.instrumento} />
-        <ProfileField etiqueta="Nivel de experiencia" valor={usuario.nivel} />
+        <ProfileField etiqueta="Fecha de nacimiento" valor={formatearFecha(usuario.fechaNacimiento)} />
       </dl>
 
       <div className="acciones-perfil">

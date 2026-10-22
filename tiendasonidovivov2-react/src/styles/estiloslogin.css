@@ -1,36 +1,91 @@
-/* --------------------------------------------------------------------
-   Adaptaciones para React
-   -------------------------------------------------------------------- */
-/* Tarjeta más ancha en el registro (antes era style inline) */
+/* ==========================================================================
+   Login y Registro
+   ========================================================================== */
+#contenido-login {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.contenedor-auth {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
 .contenedor-auth-ancho {
     max-width: 550px;
 }
 
-/* Selects con el mismo aspecto que los inputs */
-.grupo-form select {
+.caja-auth {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 2.2rem 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.caja-auth h2 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--color-texto);
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.4rem;
+}
+.subtitulo-auth {
+    text-align: center;
+    color: var(--color-texto-atenuado);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+}
+
+/* --------------------------------------------------------------------
+   Campos (React Bootstrap sin su CSS: se estilizan aquí)
+   -------------------------------------------------------------------- */
+.caja-auth .grupo-form input[type="text"],
+.caja-auth .grupo-form input[type="email"],
+.caja-auth .grupo-form input[type="password"],
+.caja-auth .grupo-form input[type="tel"],
+.caja-auth .grupo-form select {
+    width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid #444;
     border-radius: 6px;
     background-color: #1a1a1a;
     color: #fff;
     font-size: 0.95rem;
+    font-family: inherit;
     transition: all 0.3s ease;
 }
-.grupo-form select:focus {
-    outline: none;
-    border-color: #e50914;
-    box-shadow: 0 0 5px rgba(229, 9, 20, 0.4);
+.caja-auth .grupo-form input::placeholder {
+    color: #777;
 }
+.caja-auth .grupo-form input:focus,
+.caja-auth .grupo-form select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.45);
+}
+.caja-auth .grupo-form select option {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+/* Estados de validación para selects y passwords */
+.caja-auth .grupo-form input[type="password"].invalido,
 .grupo-form select.invalido {
     border: 2px solid #e74c3c;
     background-color: rgba(231, 76, 60, 0.1);
 }
+.caja-auth .grupo-form input[type="password"].valido,
 .grupo-form select.valido {
     border: 2px solid #2ecc71;
     background-color: rgba(46, 204, 113, 0.1);
 }
 
-/* Dos columnas en escritorio, una en móvil (componente responsivo) */
+/* Dos columnas en escritorio, una en móvil */
 .fila-dos-columnas {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -41,21 +96,85 @@
         grid-template-columns: 1fr;
         gap: 0;
     }
+    .caja-auth {
+        padding: 1.8rem 1.2rem;
+    }
 }
 
+/* --------------------------------------------------------------------
+   Opciones, enlaces y botón
+   -------------------------------------------------------------------- */
+.opciones-auth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0.4rem 0 1.4rem;
+    font-size: 0.88rem;
+}
 .opciones-auth-registro {
     margin-top: 0.5rem;
 }
-
-/* Checkbox de React Bootstrap alineado como en el diseño original */
+.recordar-usuario {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-texto);
+}
 .recordar-usuario input[type="checkbox"] {
     margin: 0;
+    accent-color: var(--color-primario);
+    width: 16px;
+    height: 16px;
 }
 .recordar-usuario label {
     cursor: pointer;
+    margin: 0;
+}
+.olvida-pass {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 600;
+}
+.olvida-pass:hover {
+    text-decoration: underline;
 }
 
-/* Mensaje de éxito visible (el original lo mostraba con JS) */
+.btn-auth {
+    width: 100%;
+    background-color: var(--color-primario);
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-auth:hover {
+    background-color: var(--color-primario-hover);
+}
+
+.pie-card-auth {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--color-borde);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-texto-atenuado);
+}
+.pie-card-auth a {
+    color: var(--color-primario);
+    font-weight: 600;
+    text-decoration: none;
+}
+.pie-card-auth a:hover {
+    text-decoration: underline;
+}
+
+/* Mensaje de éxito visible */
 .mensaje-oculto.mensaje-visible {
     display: block;
 }
@@ -64,4 +183,22 @@
 .error-general {
     text-align: center;
     margin-bottom: 1rem;
+}
+/* Campo de fecha dentro de la tarjeta de auth */
+.caja-auth .grupo-form input[type="date"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color-scheme: dark;
+    transition: all 0.3s ease;
+}
+.caja-auth .grupo-form input[type="date"]:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.45);
 }

@@ -17,6 +17,7 @@ import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { ProductsProvider } from './context/ProductsContext';
 import ProtectedRoute from './routes/ProtectedRoute';
+import ScrollToHash from './components/atoms/ScrollToHash';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
     <AuthProvider>
       <ProductsProvider>
         <CartProvider>
+          <ScrollToHash />
           <Header />
 
           <main id="contenido">

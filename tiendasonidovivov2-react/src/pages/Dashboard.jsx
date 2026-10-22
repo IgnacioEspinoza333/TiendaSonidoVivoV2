@@ -6,6 +6,7 @@ import '../styles/estilosindex.css';
 import '../styles/estiloscompra.css';
 import '../styles/estiloslogin.css';
 import '../styles/estilospanel.css';
+import { nombreCompleto } from '../utils/userUtils';
 
 export default function Dashboard() {
   const { usuario } = useAuth();
@@ -21,7 +22,7 @@ export default function Dashboard() {
     <section id="contenido-panel">
       <h2>Panel de Control</h2>
       <p className="panel-subtitulo">
-        Hola, {usuario.nombre}. Los productos que agregues aquí se guardan solo mientras la página esté abierta.
+        Hola, {nombreCompleto(usuario)}. Los productos que agregues aquí se guardan solo mientras la página esté abierta.
       </p>
 
       <div className="panel-layout">

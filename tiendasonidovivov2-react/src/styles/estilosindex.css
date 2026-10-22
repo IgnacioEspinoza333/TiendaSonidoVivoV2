@@ -33,9 +33,11 @@
     box-sizing: border-box;
 }
 
+/* Evita que el encabezado fijo tape las secciones al navegar con anclas: */
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    scroll-padding-top: 6rem;
 }
 
 /* Tipografía y colores base de toda la página */
@@ -59,10 +61,12 @@ body {
 .encabezado-contenedor {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 0.8rem 1.5rem;
 }
 
 /* Logo y nombre de marca en el header */
@@ -70,11 +74,13 @@ body {
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    flex-shrink: 0;
 }
 .logo-enlace {
     display: flex;
     align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
 }
 .logo-img {
     height: 48px;
@@ -99,31 +105,37 @@ body {
     font-weight: 800;
     line-height: 1.1;
 }
-/* El nombre de la marca es clickeable; hereda el color del contenedor */
 .logo-texto a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Navegación principal del header */
+/* Navegación principal: ocupa el centro y baja de línea si no cabe */
 #menu-principal {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: center;
+    flex: 1;
 }
 #menu-principal ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
-    gap: 1.5rem;
+    gap: 0.4rem 1.5rem;
 }
 #menu-principal a {
+    display: inline-block;
+    padding: 0.3rem 0;
     color: var(--color-texto);
     text-decoration: none;
     font-weight: 500;
+    border-bottom: 2px solid transparent;
     transition: var(--transicion);
 }
 #menu-principal a:hover, #menu-principal a.activo {
     color: var(--color-primario);
+    border-bottom-color: var(--color-primario);
 }
 .menu-acciones {
     display: flex;
@@ -186,6 +198,13 @@ h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
+.seccion h2,
+.seccion-hero h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    color: inherit;
+}
+
 /* Layout de 2 columnas usado en "Quiénes somos" y "Taller" */
 .contenedor-grid {
     display: grid;
@@ -371,15 +390,13 @@ h2 {
 /* Colapso a una columna y ocultamiento del menú en pantallas pequeñas */
 @media (max-width: 768px) {
     .contenedor-grid { grid-template-columns: 1fr; }
-    #menu-principal { display: none; }
 }
-
 /* --------------------------------------------------------------------
    Hero principal de la home
    -------------------------------------------------------------------- */
 .seccion-hero {
     background-color: #1a1a1a;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('../img/tienda.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('/img/tienda.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -435,17 +452,17 @@ h2 {
     border: none;
     cursor: pointer;
 }
-
 /* --------------------------------------------------------------------
    Estado de sesión en el header (visitante vs. usuario logueado)
    -------------------------------------------------------------------- */
 .menu-auth-nav {
-    margin-left: 2rem;
+    margin-left: 0;
 }
 .nav-estado-sesion {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 .btn-nav-login, .btn-nav-registro {
     text-decoration: none;
@@ -453,49 +470,104 @@ h2 {
     font-weight: 600;
     padding: 0.5rem 1rem;
     border-radius: 4px;
-    transition: all 0.3s ease;
+    white-space: nowrap;
+    transition: var(--transicion);
 }
 .btn-nav-login {
-    color: #e0e0e0;
+    color: var(--color-texto);
 }
 .btn-nav-login:hover {
-    color: #e50914;
+    color: var(--color-primario);
 }
 .btn-nav-registro {
-    background-color: #e50914;
-    color: white;
+    background-color: var(--color-primario);
+    color: #ffffff;
 }
 .btn-nav-registro:hover {
-    background-color: #b80710;
+    background-color: var(--color-primario-hover);
 }
 #nav-nombre-usuario {
     color: #2ecc71;
     font-size: 0.95rem;
     font-weight: 600;
+    white-space: nowrap;
 }
 .btn-nav-logout {
-    text-decoration: none;
-    color: #aaa;
+    background: transparent;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--color-texto-atenuado);
     font-size: 0.85rem;
-    border: 1px solid #444;
+    border: 1px solid var(--color-borde);
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
-    transition: all 0.3s;
+    white-space: nowrap;
+    transition: var(--transicion);
 }
 .btn-nav-logout:hover {
-    border-color: #e50914;
-    color: #e50914;
+    border-color: var(--color-primario);
+    color: var(--color-primario);
 }
 
-/* En móvil, el bloque de sesión se centra debajo del logo */
-@media (max-width: 768px) {
+/* Pantallas medianas: el menú pasa a una segunda fila completa */
+@media (max-width: 992px) {
+    #menu-principal {
+        order: 3;
+        flex-basis: 100%;
+        padding-top: 0.6rem;
+        border-top: 1px solid var(--color-borde);
+    }
     .menu-auth-nav {
-        margin-left: 0;
-        margin-top: 1rem;
+        margin-left: auto;
+    }
+}
+
+/* Móvil: marca arriba, sesión centrada y menú debajo */
+@media (max-width: 576px) {
+    .encabezado-contenedor {
+        padding: 0.8rem 1rem;
+        justify-content: center;
+    }
+    .marca {
         width: 100%;
         justify-content: center;
+    }
+    .marca-subtitulo {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+    .logo-texto {
+        font-size: 1.3rem;
+    }
+    .menu-auth-nav {
+        margin-left: 0;
+        width: 100%;
     }
     .nav-estado-sesion {
         justify-content: center;
     }
+}
+/* --------------------------------------------------------------------
+   Textos y títulos de las secciones del inicio
+   -------------------------------------------------------------------- */
+.texto-presentacion p {
+    color: var(--color-texto);
+    margin-bottom: 1rem;
+}
+.texto-presentacion h2 {
+    margin-bottom: 1.2rem;
+}
+.subtitulo-seccion {
+    color: var(--color-texto-atenuado);
+    max-width: 650px;
+    margin-bottom: 2rem;
+}
+.icono-proceso {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+}
+.icono-ws {
+    font-size: 1.2rem;
+    line-height: 1;
 }
