@@ -2,6 +2,8 @@
 Tienda Sonido Vivo Versión 2
 
 PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran entregas atrasadas.
+
+
 (Actualizado hasta el 23/10/26 23:55 (UCT-3)
 
 # Páginas (Faltan 2):
