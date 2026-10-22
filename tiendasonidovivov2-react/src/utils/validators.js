@@ -5,6 +5,8 @@ const REGEX_RUT = /^[0-9]{7,8}-[0-9Kk]{1}$/;
 const REGEX_USUARIO = /^[a-zA-Z0-9_.-]{4,}$/;
 const REGEX_EMAIL = /^[\w.+-]+@(gmail\.com|outlook\.com|duocuc\.cl|hotmail\.com)$/i;
 
+export const validarApellido = (valor = '') =>
+  REGEX_NOMBRE.test(valor.trim()) ? '' : 'Ingresa un apellido válido (solo letras, mínimo 3)';
 export const validarNombre = (valor = '') =>
   REGEX_NOMBRE.test(valor.trim()) ? '' : 'Ingresa un nombre válido (solo letras, mínimo 3)';
 
@@ -42,9 +44,11 @@ export const validarLogin = ({ usuario, email, password }) =>
 export const validarRegistro = (v) =>
   soloErrores({
     nombre: validarNombre(v.nombre),
+    apellido: validarApellido(v.apellido),
     rut: validarRut(v.rut),
     usuario: validarUsuario(v.usuario),
     email: validarEmail(v.email),
+    fechaNacimiento: validarFechaNacimiento(v.fechaNacimiento),
     instrumento: validarSeleccion(v.instrumento, 'tu instrumento principal'),
     nivel: validarSeleccion(v.nivel, 'tu nivel de experiencia'),
     password: validarPassword(v.password),
@@ -80,6 +84,7 @@ export const validarDireccion = (valor = '') =>
 export const validarCheckout = (v) =>
   soloErrores({
     nombre: validarNombre(v.nombre),
+    apellido: validarApellido(v.apellido),
     rut: validarRut((v.rut || '').replace(/\./g, '')),
     email: validarEmail(v.email),
     fono: validarTelefono(v.fono),

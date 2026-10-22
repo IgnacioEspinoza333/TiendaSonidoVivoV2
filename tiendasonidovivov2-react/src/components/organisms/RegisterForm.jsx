@@ -13,7 +13,8 @@ import SuccessMessage from '../atoms/SuccessMessage';
 import FieldError from '../atoms/FieldError';
 
 const VALORES_INICIALES = {
-  nombre: '', rut: '', usuario: '', email: '',
+  nombre: '', apellido: '', rut: '', usuario: '', email: '',
+  fechaNacimiento: '',
   instrumento: '', nivel: '',
   password: '', confirmarPassword: '', terminos: false,
 };
@@ -53,20 +54,30 @@ export default function RegisterForm() {
 
   return (
     <Form id="form-registro" noValidate onSubmit={handleSubmit(onValido)}>
-      <FormField {...campo('nombre')} label="Nombre completo:" placeholder="Ej: Juan Pérez" autoComplete="name" />
-      <FormField {...campo('rut')} label="RUT (sin puntos y con guion):" placeholder="Ej: 12345678-9" />
-      <FormField {...campo('usuario')} label="Nombre de usuario:" placeholder="Ej: jperez" autoComplete="username" />
-      <FormField {...campo('email')} type="email" label="Correo electrónico:" placeholder="ejemplo@gmail.com" autoComplete="email" />
-
-      {/* Campos de contexto de la tienda: qué toca y a qué nivel */}
+      {/* Datos personales */}
       <div className="fila-dos-columnas">
-        <SelectField {...campo('instrumento')} label="Instrumento principal:" opciones={INSTRUMENTOS} placeholder="Selecciona..." />
-        <SelectField {...campo('nivel')} label="Nivel de experiencia:" opciones={NIVELES} placeholder="Selecciona..." />
+        <FormField {...campo('nombre')} label="Nombre:" placeholder="Ej: Juan" autoComplete="given-name" />
+        <FormField {...campo('apellido')} label="Apellido:" placeholder="Ej: Pérez" autoComplete="family-name" />
       </div>
 
       <div className="fila-dos-columnas">
-        <FormField {...campo('password')} type="password" label="Contraseña:" placeholder="••••••••" autoComplete="new-password" />
-        <FormField {...campo('confirmarPassword', 'confirmar-password')} type="password" label="Confirmar contraseña:" placeholder="••••••••" autoComplete="new-password" />
+        <FormField {...campo('rut')} label="RUT (sin puntos, con guion):" placeholder="Ej: 12345678-9" />
+        <FormField {...campo('fechaNacimiento', 'fecha-nacimiento')} type="date" label="Fecha de nacimiento:" autoComplete="bday" />
+      </div>
+
+      {/* Datos de la cuenta */}
+      <FormField {...campo('usuario')} label="Nombre de usuario:" placeholder="Ej: jperez" autoComplete="username" />
+      <FormField {...campo('email')} type="email" label="Correo electrónico:" placeholder="ejemplo@gmail.com" autoComplete="email" />
+
+      <div className="fila-dos-columnas">
+        <FormField {...campo('password')} type="password" label="Contraseña:" placeholder="Mínimo 6 caracteres" autoComplete="new-password" />
+        <FormField {...campo('confirmarPassword', 'confirmar-password')} type="password" label="Confirmar contraseña:" placeholder="Repite tu contraseña" autoComplete="new-password" />
+      </div>
+
+      {/* Datos de contexto de la tienda: qué toca y a qué nivel */}
+      <div className="fila-dos-columnas">
+        <SelectField {...campo('instrumento')} label="Instrumento principal:" opciones={INSTRUMENTOS} placeholder="Selecciona..." />
+        <SelectField {...campo('nivel')} label="Nivel de experiencia:" opciones={NIVELES} placeholder="Selecciona..." />
       </div>
 
       <div className="opciones-auth opciones-auth-registro">

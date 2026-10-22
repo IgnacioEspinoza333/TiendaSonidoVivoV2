@@ -10,15 +10,18 @@
     color: #e0e0e0;
 }
 
-/* Layout en 2 columnas: resumen de orden + formulario de pago */
+/* Carrito arriba y formulario de pago abajo */
 .contenedor-checkout {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    display: flex;
+    flex-direction: column;
     gap: 3rem;
+}
+.contenedor-checkout > * {
+    min-width: 0;
 }
 
 /* Título de cada bloque (Resumen de tu Orden / Datos de Pago) */
-h2 {
+#contenido-compra h2 {
     color: #fff;
     border-bottom: 1px solid #333;
     padding-bottom: 0.5rem;
@@ -106,12 +109,11 @@ h2 {
 }
 
 /* En pantallas angostas, el checkout pasa a una sola columna */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .contenedor-checkout {
         grid-template-columns: 1fr;
     }
 }
-
 /* --------------------------------------------------------------------
    Selector de Forma de Pago (radio buttons)
    -------------------------------------------------------------------- */
@@ -283,21 +285,13 @@ input.valido {
     flex-wrap: wrap;
 }
 
-/* El botón "Proceder al pago" y "Volver" ahora son <button>, no <a> */
-button.btn-proceder-pago {
-    border: none;
-    cursor: pointer;
-    margin-left: 0;
-}
 button.btn-secundario-caja {
     border: none;
     cursor: pointer;
     font-size: 1rem;
     font-family: inherit;
 }
-.btn-volver {
-    margin-bottom: 1.5rem;
-}
+
 
 /* Resumen de la orden */
 .lista-resumen {

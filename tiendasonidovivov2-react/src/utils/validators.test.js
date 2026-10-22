@@ -67,7 +67,7 @@ describe('validators', () => {
   it('PU-05: el checkout con retiro en tienda no exige dirección ni región', () => {
     // Arrange
     const datos = {
-      nombre: 'Juan Pérez', rut: '12345678-9', email: 'jp@gmail.com', fono: '+56912345678',
+      nombre: 'Juan', apellido: 'Pérez', rut: '12345678-9', email: 'jp@gmail.com', fono: '+56912345678',
       fenac: '2000-05-10', entrega: 'retiro', region: '', direccion: '', fdepago: 'debito',
     };
 
@@ -81,7 +81,7 @@ describe('validators', () => {
   it('PU-06: el checkout con despacho exige región y dirección', () => {
     // Arrange
     const datos = {
-      nombre: 'Juan Pérez', rut: '12345678-9', email: 'jp@gmail.com', fono: '+56912345678',
+      nombre: 'Juan', apellido: 'Pérez', rut: '12345678-9', email: 'jp@gmail.com', fono: '+56912345678',
       fenac: '2000-05-10', entrega: 'despacho', region: '', direccion: '', fdepago: 'debito',
     };
 

@@ -14,14 +14,11 @@ export default function CheckoutForm({ onConfirmar }) {
   const { values, errors, enviado, handleChange, handleSubmit } = useForm(
     {
       nombre: usuario?.nombre ?? '',
+      apellido: usuario?.apellido ?? '',
       rut: usuario?.rut ?? '',
       email: usuario?.email ?? '',
       fono: '',
-      fenac: '',
-      entrega: 'retiro',
-      region: '',
-      direccion: '',
-      fdepago: '',
+      fenac: usuario?.fechaNacimiento ?? '',
     },
     validarCheckout
   );
@@ -39,7 +36,8 @@ export default function CheckoutForm({ onConfirmar }) {
     <section className="formulario-checkout">
       <h2>Datos de Pago</h2>
       <Form id="contacto" noValidate onSubmit={handleSubmit(onConfirmar)}>
-        <FormField {...campo('nombre')} label="Nombre completo:" placeholder="Ingrese su nombre" autoComplete="name" />
+        <FormField {...campo('nombre')} label="Nombre:" placeholder="Ej: Juan" autoComplete="given-name" />
+        <FormField {...campo('apellido')} label="Apellido:" placeholder="Ej: Pérez" autoComplete="family-name" />
         <FormField {...campo('rut')} label="RUT:" placeholder="Formato 12345678-9 (Sin puntos)" />
         <FormField {...campo('email')} type="email" label="Correo electrónico:" placeholder="duocuc@gmail.com" autoComplete="email" />
         <FormField {...campo('fono')} type="tel" label="Teléfono:" placeholder="+56912345678" autoComplete="tel" />
