@@ -20,7 +20,7 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - ERROR 404
 
 
-#Cosas a Agregar
+# Cosas a Agregar
 
 Funcionalidades interactivas: Incorporar al menos 4 características distintas y funcionales que usen estados:
 
