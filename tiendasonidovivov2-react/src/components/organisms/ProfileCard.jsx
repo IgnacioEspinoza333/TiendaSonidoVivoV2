@@ -8,7 +8,7 @@ import { nombreCompleto, formatearFecha } from '../../utils/userUtils';
 
 // Tarjeta con los datos del usuario que inició sesión y accesos rápidos
 export default function ProfileCard() {
-  const { usuario, cerrarSesion } = useAuth();
+  const { usuario, cerrarSesion, esAdmin } = useAuth();
   const { carrito } = useCart();
   const navigate = useNavigate();
 
@@ -27,10 +27,12 @@ export default function ProfileCard() {
         <ProfileField etiqueta="Nombre de usuario" valor={usuario.usuario} />
         <ProfileField etiqueta="Correo electrónico" valor={usuario.email} />
         <ProfileField etiqueta="Fecha de nacimiento" valor={formatearFecha(usuario.fechaNacimiento)} />
+        <ProfileField etiqueta="Instrumento principal" valor={usuario.instrumento} />
+        <ProfileField etiqueta="Nivel de experiencia" valor={usuario.nivel} />
       </dl>
 
       <div className="acciones-perfil">
-        <Link to="/panel" className="btn-primario">Ir al Panel de Control</Link>
+        {esAdmin && <Link to="/panel" className="btn-primario">Ir al Panel de Control</Link>}
         <Link to="/carrito" className="btn-secundario-caja">Ver carrito ({contarUnidades(carrito)})</Link>
         <button type="button" className="btn-eliminar" onClick={handleLogout}>Cerrar Sesión</button>
       </div>

@@ -7,8 +7,8 @@ export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const navigate = useNavigate();
-  const { usuario, estaAutenticado, cerrarSesion } = useAuth();
-
+  const { usuario, estaAutenticado, esAdmin, cerrarSesion } = useAuth();
+  
   const handleLogout = () => {
     cerrarSesion();
     navigate('/');
@@ -46,7 +46,7 @@ export default function Header() {
             {estaAutenticado && (
               <>
                 <NavLink to="/perfil">Mi Perfil</NavLink>
-                <NavLink to="/panel">Panel</NavLink>
+                {esAdmin && <NavLink to="/panel">Panel</NavLink>}
               </>
             )}
           </ul>

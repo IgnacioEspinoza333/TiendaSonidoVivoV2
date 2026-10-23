@@ -7,7 +7,8 @@ export const CLAVE_RECORDADO = 'usuarioRecordado';
 // Credenciales estáticas pedidas por la evaluación
 export const USUARIOS_ESTATICOS = [
   {
-    nombre: 'Administrador Sonido Vivo',
+    nombre: 'Administrador',
+    apellido: 'Sonido Vivo',
     rut: '11111111-1',
     usuario: 'admin',
     email: 'admin@duocuc.cl',
@@ -17,7 +18,8 @@ export const USUARIOS_ESTATICOS = [
     rol: 'admin',
   },
   {
-    nombre: 'Cliente Demo',
+    nombre: 'Cliente',
+    apellido: 'Demo',
     rut: '22222222-2',
     usuario: 'cliente',
     email: 'cliente@gmail.com',
