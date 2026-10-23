@@ -22,6 +22,9 @@ export default function ProductForm({ producto, onCrear, onGuardar, onCancelar }
     validarProducto
   );
 
+  // Nombre del último producto creado (para mostrar el mensaje de éxito)
+  const [creado, setCreado] = useState('');
+
   // El mensaje de éxito desaparece solo a los 3 segundos
   useEffect(() => {
     if (!creado) return undefined;
@@ -38,6 +41,7 @@ export default function ProductForm({ producto, onCrear, onGuardar, onCancelar }
     setCreado(nuevo.nombre);
     reset();
   };
+
   const campo = (name) => ({
     id: `producto-${name}`,
     name,
@@ -64,6 +68,12 @@ export default function ProductForm({ producto, onCrear, onGuardar, onCancelar }
         <img src={editando ? producto.imagen : IMAGEN_POR_DEFECTO} alt={editando ? producto.nombre : 'Imagen genérica'} />
         {editando ? 'Se mantiene la imagen actual del producto.' : 'Se asignará una imagen genérica por defecto.'}
       </p>
+
+      {creado && (
+        <SuccessMessage id="mensaje-producto-exito">
+          ¡El producto "{creado}" fue agregado al catálogo!
+        </SuccessMessage>
+      )}
 
       <AuthButton id="btn-crear-producto">{editando ? 'Guardar cambios' : 'Agregar Producto'}</AuthButton>
       {editando && <button type="button" className="btn-secundario-caja" onClick={onCancelar}>Cancelar</button>}

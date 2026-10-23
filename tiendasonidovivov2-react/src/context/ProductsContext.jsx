@@ -1,6 +1,5 @@
 import { createContext, useState, useContext } from 'react';
 import { productsData } from '../data/products';
-import { crearProducto, siguienteId } from '../utils/productUtils';
 import { crearProducto, siguienteId, actualizarDatosProducto } from '../utils/productUtils';
 
 export const ProductsContext = createContext();

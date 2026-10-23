@@ -16,42 +16,45 @@ import NotFound from './pages/NotFound';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { ProductsProvider } from './context/ProductsContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ScrollToHash from './components/atoms/ScrollToHash';
 
 function App() {
   return (
-    // Los providers envuelven toda la estructura para que Header y Rutas accedan a sesión, productos y carrito
+    // Los providers envuelven toda la estructura para que Header y Rutas accedan a sesión, productos, carrito y favoritos
     <AuthProvider>
       <ProductsProvider>
         <CartProvider>
-          <ScrollToHash />
-          <Header />
+          <FavoritesProvider>
+            <ScrollToHash />
+            <Header />
 
-          <main id="contenido">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/productos" element={<Catalog />} />
-              <Route path="/producto/:id" element={<ProductDetail />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/registro" element={<Register />} />
-              <Route path="/carrito" element={<CartAndCheckout />} />
+            <main id="contenido">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/productos" element={<Catalog />} />
+                <Route path="/producto/:id" element={<ProductDetail />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/registro" element={<Register />} />
+                <Route path="/carrito" element={<CartAndCheckout />} />
 
-              {/* Rutas privadas: exigen sesión iniciada */}
-              <Route element={<ProtectedRoute />}>
-                <Route path="/perfil" element={<Profile />} />
-              </Route>
+                {/* Rutas privadas: exigen sesión iniciada */}
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/perfil" element={<Profile />} />
+                </Route>
 
-              {/* Ruta de administración: exige sesión y rol admin */}
-              <Route element={<ProtectedRoute soloAdmin />}>
-                <Route path="/panel" element={<Dashboard />} />
-              </Route>
+                {/* Ruta de administración: exige sesión y rol admin */}
+                <Route element={<ProtectedRoute soloAdmin />}>
+                  <Route path="/panel" element={<Dashboard />} />
+                </Route>
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
 
-          <Footer />
+            <Footer />
+          </FavoritesProvider>
         </CartProvider>
       </ProductsProvider>
     </AuthProvider>

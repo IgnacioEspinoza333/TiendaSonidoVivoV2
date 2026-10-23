@@ -13,11 +13,12 @@
     margin-bottom: 2rem;
 }
 
-/* Formulario a la izquierda, tabla a la derecha. En pantallas angostas se apilan */
+/* Formulario a la izquierda (ancho acotado), tabla a la derecha con el resto del espacio.
+   En pantallas angostas se apilan */
 .panel-layout {
     display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 2.5rem;
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: 2rem;
     align-items: start;
 }
 @media (max-width: 960px) {
@@ -42,9 +43,19 @@
     font-size: 0.9em;
 }
 
+/* --------------------------------------------------------------------
+   Campos del formulario del panel
+   -------------------------------------------------------------------- */
+/* Las columnas de una fila pueden encogerse: evita que un campo se salga de la tarjeta */
+.fila-dos-columnas > .grupo-form {
+    min-width: 0;
+}
+
 /* Inputs numéricos y área de texto con el mismo aspecto que los demás campos */
 .grupo-form input[type="number"],
 .grupo-form textarea {
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.8rem;
     border: 1px solid #444;
     border-radius: 4px;
@@ -69,6 +80,29 @@
     background-color: rgba(46, 204, 113, 0.1);
 }
 
+/* Desplegable (Categoría) con el mismo aspecto oscuro que el resto de campos */
+.grupo-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.8rem;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color-scheme: dark;
+    transition: all 0.3s ease;
+}
+.grupo-form select:focus {
+    outline: none;
+    border-color: #e50914;
+}
+.grupo-form select option {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
 /* Aviso de imagen genérica */
 .nota-imagen {
     display: flex;
@@ -85,11 +119,32 @@
     border-radius: 4px;
 }
 
-/* Botones de cada fila de la tabla */
+/* --------------------------------------------------------------------
+   Tabla de productos del panel (más compacta que la del carrito)
+   -------------------------------------------------------------------- */
+.panel-tarjeta .tabla-carrito {
+    margin-bottom: 0;
+}
+.panel-tarjeta .tabla-carrito th,
+.panel-tarjeta .tabla-carrito td {
+    padding: 0.8rem 0.6rem;
+}
+.panel-tarjeta .tabla-carrito img {
+    width: 48px;
+    height: 48px;
+}
+
+/* Botones de cada fila: apilados y del mismo ancho, siempre visibles */
 .acciones-fila {
     display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    min-width: 84px;
+}
+.acciones-fila > * {
+    text-align: center;
+    white-space: nowrap;
 }
 .btn-tabla {
     padding: 0.5rem 0.8rem;

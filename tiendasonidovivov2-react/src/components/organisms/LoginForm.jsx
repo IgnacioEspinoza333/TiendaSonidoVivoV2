@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../context/AuthContext';
 import useForm from '../../hooks/useForm';
@@ -67,7 +67,6 @@ export default function LoginForm() {
 
       <div className="opciones-auth">
         <CheckField id="recordar" name="recordar" label="Recordarme" checked={values.recordar} onChange={handleChange} />
-        <Link to="/login" className="olvida-pass" onClick={(e) => e.preventDefault()}>¿Olvidaste tu contraseña?</Link>
       </div>
 
       {errorGeneral && <div className="error-general"><FieldError mensaje={errorGeneral} /></div>}

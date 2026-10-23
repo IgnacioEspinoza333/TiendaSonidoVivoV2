@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ProductsProvider } from './context/ProductsContext';
 import { CartProvider } from './context/CartContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 // Renderiza un componente con router y contextos, como lo hace App.jsx
 export function renderConProviders(ui, { ruta = '/' } = {}) {
@@ -10,7 +11,9 @@ export function renderConProviders(ui, { ruta = '/' } = {}) {
     <MemoryRouter initialEntries={[ruta]}>
       <AuthProvider>
         <ProductsProvider>
-          <CartProvider>{ui}</CartProvider>
+          <CartProvider>
+            <FavoritesProvider>{ui}</FavoritesProvider>
+          </CartProvider>
         </ProductsProvider>
       </AuthProvider>
     </MemoryRouter>

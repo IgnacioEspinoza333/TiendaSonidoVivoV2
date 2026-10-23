@@ -53,7 +53,6 @@ export const validarRegistro = (v) =>
     nivel: validarSeleccion(v.nivel, 'tu nivel de experiencia'),
     password: validarPassword(v.password),
     confirmarPassword: validarConfirmacion(v.password, v.confirmarPassword),
-    terminos: v.terminos ? '' : 'Debes aceptar los Términos y Condiciones',
   });
  
 /* --------------------------------------------------------------------

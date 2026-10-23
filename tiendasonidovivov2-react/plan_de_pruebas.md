@@ -1,6 +1,6 @@
 # Plan de Pruebas Unitarias
 
-**Nombre del Estudiante:** [AXEL JURIS, IGNACIO ESPINOZA]
+**Nombre del Estudiante:** Axel Juris, Ignacio Espinoza
 <br />
 
 **Componente / Módulo Principal:** Autenticación (Login y Registro), Carrito y Checkout, Catálogo, Panel de Control, Rutas protegidas.
@@ -26,7 +26,7 @@ Herramientas: Vitest, React Testing Library y jsdom. Todas las pruebas siguen el
 | PU-01 | validators | Acepta correos de dominios permitidos y rechaza otros | Correos `cliente@gmail.com` y `cliente@yahoo.com` | Llamar `validarEmail` con cada uno | El permitido devuelve `''`; el otro devuelve un mensaje de error | Pasa |
 | PU-02 | validators | Valida el formato del RUT (sin puntos y con guion) | RUT `12345678-9` y `123456789` (sin guion) | Llamar `validarRut` con ambos | El primero devuelve `''`; el segundo devuelve "Formato incorrecto. Ej: 12345678-9" | Pasa |
 | PU-03 | validators | El login vacío reporta 3 errores y el válido ninguno | Un objeto con campos vacíos y las credenciales del admin | Llamar `validarLogin` con ambos | Errores en `usuario`, `email` y `password`; el válido devuelve `{}` | Pasa |
-| PU-04 | validators | El registro exige contraseñas iguales, términos aceptados e instrumento | Datos con contraseñas distintas, términos sin marcar e instrumento vacío | Llamar `validarRegistro(datos)` | Errores en `confirmarPassword`, `terminos` e `instrumento`; sin error en `nivel` | Pasa |
+| PU-04 | validators | El registro exige contraseñas iguales e instrumento | Datos con contraseñas distintas e instrumento vacío | Llamar `validarRegistro(datos)` | Errores en `confirmarPassword` e `instrumento`; sin error en `nivel` | Pasa |
 | PU-05 | validators | El checkout con retiro en tienda no exige dirección ni región | Datos válidos con `entrega: 'retiro'` y región y dirección vacías | Llamar `validarCheckout(datos)` | Devuelve `{}` (sin errores) | Pasa |
 | PU-06 | validators | El checkout con despacho exige región y dirección | Los mismos datos con `entrega: 'despacho'` | Llamar `validarCheckout(datos)` | Errores solo en `region` y `direccion` | Pasa |
 | PU-07 | validators | Calcula la edad y rechaza a menores de 18 años | Fecha de hoy 15-06-2026; nacimientos 16-06-2000, 15-06-2000 y 01-01-2015 | Llamar `calcularEdad` y `validarFechaNacimiento` | Edades 25 y 26; error "Debes ser mayor de 18 años" | Pasa |
@@ -38,7 +38,7 @@ Herramientas: Vitest, React Testing Library y jsdom. Todas las pruebas siguen el
 | PU-13 | LoginForm | Al enviar vacío muestra los errores de cada campo | Render del formulario con router y contextos | Clic en el botón "Ingresar" | Se ven los mensajes de usuario, correo y contraseña | Pasa |
 | PU-14 | LoginForm | Con credenciales inexistentes muestra un error general | Formulario completado con un usuario que no existe | Clic en "Ingresar" | Aparece "Usuario, correo o contraseña incorrectos." | Pasa |
 | PU-15 | LoginForm | Con las credenciales del admin muestra el mensaje de éxito | Formulario completado con `admin`, `admin@duocuc.cl` y `admin123` | Clic en "Ingresar" | Se ve "¡Inicio de sesión exitoso!" y el botón "Ingresar" desaparece | Pasa |
-| PU-16 | RegisterForm | Al enviar vacío exige instrumento, nivel y términos | Render del formulario de registro | Clic en "Crear Cuenta" | Se ven los mensajes de instrumento, nivel y términos | Pasa |
+| PU-16 | RegisterForm | Al enviar vacío exige instrumento y nivel | Render del formulario de registro | Clic en "Crear Cuenta" | Se ven los mensajes de instrumento y nivel | Pasa |
 | PU-17 | CheckoutForm | Región y dirección aparecen solo con despacho a domicilio | Render del formulario (estado inicial: retiro en tienda) | Clic en "Despacho a domicilio" y luego en "Retiro en tienda" | Al inicio no existe "Región:"; con despacho aparecen región y dirección; con retiro vuelven a desaparecer | Pasa |
 | PU-18 | CartTable | Muestra el producto con su subtotal y llama a `onEliminar` con su id | Carrito con un producto (id 7, 2 unidades de $100.000) y `onEliminar` simulado | Clic en el botón "Eliminar" | Se ve el nombre y el subtotal $200.000; `onEliminar` se llama con 7 | Pasa |
 | PU-19 | ProductForm | Con datos válidos llama a `onCrear` y muestra el mensaje de éxito | Formulario completado con un producto válido y `onCrear` simulado | Clic en "Agregar Producto" | `onCrear` se llama 1 vez; aparece el mensaje "fue agregado al catálogo" con el nombre | Pasa |
