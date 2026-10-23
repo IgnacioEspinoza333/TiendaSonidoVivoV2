@@ -13,29 +13,10 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Login
   - Registro
   - Mi Perfil
-      - *Falta Migrar*
   - Panel de Control (Admin)
       - *Falta Migrar*
-  - Carrito de Compras (Resumen de pago / Checkout).
+  - Carrito de Compras (Resumen de pago + Checkout).
   - ERROR 404
-
-
-# Cosas extras a agregar:
-
-- Trello
-
-
-- Funcionalidades interactivas: Incorporar al menos 4 características distintas y funcionales que usen estados:
-
-  (ej. alternancia de tema claro/oscuro, carrito de compras, filtrado dinámico, agregar a favoritos, etc).
-  
-  Listo:
-    - carrito de compras
-    - filtrado dinámico
-  
-  Falta
-    - claro/oscuro
-    - agregar a favoritos (que salgan al principio del catalogo)
 
 
 # Cuentas de acceso
@@ -44,6 +25,28 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
 |---|---|---|---|
 | Administrador | `admin` | `admin123` | admin@duocuc.cl |
 | Cliente | `cliente` | `cliente123` | cliente@gmail.com |
+
+
+## Tareas pendientes
+
+- [ ] Panel: editar productos (Update) y su test
+- [ ] Panel: revisar que cumpla el enunciado (imagen genérica, sesión en localStorage, acceso restringido)
+- [ ] Tema claro/oscuro: reemplazar ~150 colores fijos por variables CSS
+- [ ] Tema claro/oscuro: botón de cambio de tema en el Header
+- [ ] Tema claro/oscuro: guardar la elección en localStorage (`ThemeContext`)
+- [ ] Limpieza: borrar `OrderSummary.jsx` y estilos sin uso
+- [ ] Tests: `ProtectedRoute` y `ThemeContext`
+
+
+
+# Cosas extras a agregar:
+
+- Terminar Trello
+- alternancia de tema claro/oscuro
+- agregar productos a favoritos (que salgan al principio del catalogo)
+
+
+
 
 ------------------
 
