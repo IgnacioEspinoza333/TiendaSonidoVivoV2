@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useAuth } from '../../context/AuthContext';
 import useForm from '../../hooks/useForm';
@@ -7,7 +7,6 @@ import { validarRegistro } from '../../utils/validators';
 import { INSTRUMENTOS, NIVELES } from '../../data/opciones';
 import FormField from '../molecules/FormField';
 import SelectField from '../molecules/SelectField';
-import CheckField from '../molecules/CheckField';
 import AuthButton from '../atoms/AuthButton';
 import SuccessMessage from '../atoms/SuccessMessage';
 import FieldError from '../atoms/FieldError';
@@ -16,7 +15,7 @@ const VALORES_INICIALES = {
   nombre: '', apellido: '', rut: '', usuario: '', email: '',
   fechaNacimiento: '',
   instrumento: '', nivel: '',
-  password: '', confirmarPassword: '', terminos: false,
+  password: '', confirmarPassword: '',
 };
 
 export default function RegisterForm() {
@@ -78,17 +77,6 @@ export default function RegisterForm() {
       <div className="fila-dos-columnas">
         <SelectField {...campo('instrumento')} label="Instrumento principal:" opciones={INSTRUMENTOS} placeholder="Selecciona..." />
         <SelectField {...campo('nivel')} label="Nivel de experiencia:" opciones={NIVELES} placeholder="Selecciona..." />
-      </div>
-
-      <div className="opciones-auth opciones-auth-registro">
-        <CheckField
-          id="terminos"
-          name="terminos"
-          checked={values.terminos}
-          onChange={handleChange}
-          error={errors.terminos}
-          label={<>Acepto los <Link to="/registro" className="olvida-pass" onClick={(e) => e.preventDefault()}>Términos y Condiciones</Link></>}
-        />
       </div>
 
       {errorGeneral && <div className="error-general"><FieldError mensaje={errorGeneral} /></div>}

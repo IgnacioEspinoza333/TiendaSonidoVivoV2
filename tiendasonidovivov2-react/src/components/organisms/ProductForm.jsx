@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import useForm from '../../hooks/useForm';
 import { validarProducto } from '../../utils/validators';
+import { productoAFormulario } from '../../utils/productUtils';
 import { CATEGORIAS, IMAGEN_POR_DEFECTO } from '../../data/opciones';
 import FormField from '../molecules/FormField';
 import SelectField from '../molecules/SelectField';
@@ -13,9 +14,15 @@ const VALORES_INICIALES = {
   nombre: '', categoria: '', marca: '', precio: '', stock: '', descripcion: '',
 };
 
-// Formulario para crear un producto nuevo (se guarda solo en memoria)
-export default function ProductForm({ onCrear }) {
-  const { values, errors, enviado, handleChange, handleSubmit, reset } = useForm(VALORES_INICIALES, validarProducto);
+// Formulario para crear o editar un producto (se guarda solo en memoria)
+export default function ProductForm({ producto, onCrear, onGuardar, onCancelar }) {
+  const editando = Boolean(producto);
+  const { values, errors, enviado, handleChange, handleSubmit, reset } = useForm(
+    editando ? productoAFormulario(producto) : VALORES_INICIALES,
+    validarProducto
+  );
+
+  // Nombre del último producto creado (para mostrar el mensaje de éxito)
   const [creado, setCreado] = useState('');
 
   // El mensaje de éxito desaparece solo a los 3 segundos
@@ -26,6 +33,10 @@ export default function ProductForm({ onCrear }) {
   }, [creado]);
 
   const onValido = (datos) => {
+    if (editando) {
+      onGuardar(datos);
+      return;
+    }
     const nuevo = onCrear(datos);
     setCreado(nuevo.nombre);
     reset();
@@ -54,12 +65,18 @@ export default function ProductForm({ onCrear }) {
       <TextAreaField {...campo('descripcion')} label="Descripción:" placeholder="Características principales del producto" />
 
       <p className="nota-imagen">
-        <img src={IMAGEN_POR_DEFECTO} alt="Imagen genérica" />
-        Se asignará una imagen genérica por defecto.
+        <img src={editando ? producto.imagen : IMAGEN_POR_DEFECTO} alt={editando ? producto.nombre : 'Imagen genérica'} />
+        {editando ? 'Se mantiene la imagen actual del producto.' : 'Se asignará una imagen genérica por defecto.'}
       </p>
 
-      <AuthButton id="btn-crear-producto">Agregar Producto</AuthButton>
-      {creado && <SuccessMessage id="mensaje-producto-creado">¡"{creado}" fue agregado al catálogo!</SuccessMessage>}
+      {creado && (
+        <SuccessMessage id="mensaje-producto-exito">
+          ¡El producto "{creado}" fue agregado al catálogo!
+        </SuccessMessage>
+      )}
+
+      <AuthButton id="btn-crear-producto">{editando ? 'Guardar cambios' : 'Agregar Producto'}</AuthButton>
+      {editando && <button type="button" className="btn-secundario-caja" onClick={onCancelar}>Cancelar</button>}
     </Form>
   );
 }

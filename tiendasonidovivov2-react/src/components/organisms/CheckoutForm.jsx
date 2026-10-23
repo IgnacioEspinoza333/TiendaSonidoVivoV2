@@ -19,6 +19,10 @@ export default function CheckoutForm({ onConfirmar }) {
       email: usuario?.email ?? '',
       fono: '',
       fenac: usuario?.fechaNacimiento ?? '',
+      entrega: 'retiro',
+      region: '',
+      direccion: '',
+      fdepago: '',
     },
     validarCheckout
   );

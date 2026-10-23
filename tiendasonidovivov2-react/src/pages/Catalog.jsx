@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useProducts } from '../context/ProductsContext';
+import { useFavorites } from '../context/FavoritesContext';
 import { FILTROS_CATALOGO } from '../data/opciones';
-import { filtrarProductos } from '../utils/productUtils';
+import { filtrarProductos, normalizar } from '../utils/productUtils';
+import { ordenarFavoritosPrimero } from '../utils/favoritesUtils';
 import CategoryFilterBar from '../components/molecules/CategoryFilterBar';
 import SearchBox from '../components/molecules/SearchBox';
 import ProductGrid from '../components/organisms/ProductGrid';
@@ -9,14 +12,24 @@ import '../styles/estilosproductos.css';
 
 export default function Catalog() {
   const { productos } = useProducts();
+  const { favoritos } = useFavorites();
+  const [searchParams] = useSearchParams();
+
+  // Si la URL trae ?categoria=..., el catálogo parte con ese filtro activo
+  const filtroDesdeUrl = () => {
+    const categoria = normalizar(searchParams.get('categoria') ?? '');
+    const filtro = FILTROS_CATALOGO.find((f) => f.categorias?.includes(categoria));
+    return filtro ? filtro.valor : 'todos';
+  };
 
   // Estados de la barra de herramientas
-  const [filtroActivo, setFiltroActivo] = useState('todos');
+  const [filtroActivo, setFiltroActivo] = useState(filtroDesdeUrl);
   const [busqueda, setBusqueda] = useState('');
 
-  // Estado derivado: se filtra el arreglo antes de renderizar
+  // Estado derivado: se filtra el arreglo y luego los favoritos pasan al principio
   const filtro = FILTROS_CATALOGO.find((f) => f.valor === filtroActivo);
   const productosFiltrados = filtrarProductos(productos, filtro, busqueda);
+  const productosOrdenados = ordenarFavoritosPrimero(productosFiltrados, favoritos);
 
   return (
     <>
@@ -32,12 +45,12 @@ export default function Catalog() {
           </div>
 
           <p className="contador-resultados" id="contador-resultados" aria-live="polite">
-            {productosFiltrados.length === 1 ? '1 producto encontrado' : `${productosFiltrados.length} productos encontrados`}
+            {productosOrdenados.length === 1 ? '1 producto encontrado' : `${productosOrdenados.length} productos encontrados`}
           </p>
         </div>
       </section>
 
-      <ProductGrid productos={productosFiltrados} />
+      <ProductGrid productos={productosOrdenados} />
     </>
   );
 }

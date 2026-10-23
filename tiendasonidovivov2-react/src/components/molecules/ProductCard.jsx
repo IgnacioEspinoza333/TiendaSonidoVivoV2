@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useFavorites } from '../../context/FavoritesContext';
+import FavoriteButton from '../atoms/FavoriteButton';
 
 export default function ProductCard({ id, nombre, categoria, precio, descripcion, imagen }) {
+  const { esFavorito, alternarFavorito } = useFavorites();
+
   return (
     <article className="tarjeta-producto" data-categoria={categoria.toLowerCase()}>
       <div className="producto-imagen-contenedor">
         <img src={imagen} alt={nombre} loading="lazy" />
         <span className="producto-categoria">{categoria}</span>
+        <FavoriteButton activo={esFavorito(id)} onClick={() => alternarFavorito(id)} />
       </div>
       <div className="producto-info">
         <h3>{nombre}</h3>

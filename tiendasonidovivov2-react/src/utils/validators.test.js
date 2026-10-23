@@ -46,12 +46,12 @@ describe('validators', () => {
     expect(erroresValido).toEqual({});
   });
 
-  it('PU-04: el registro exige coincidir contraseñas, aceptar términos y elegir instrumento', () => {
+  it('PU-04: el registro exige coincidir contraseñas y elegir instrumento', () => {
     // Arrange
     const datos = {
       nombre: 'Juan Pérez', rut: '12345678-9', usuario: 'jperez', email: 'jp@gmail.com',
       instrumento: '', nivel: 'Principiante',
-      password: 'abc123', confirmarPassword: 'otra123', terminos: false,
+      password: 'abc123', confirmarPassword: 'otra123',
     };
 
     // Act
@@ -59,11 +59,10 @@ describe('validators', () => {
 
     // Assert
     expect(errores).toHaveProperty('confirmarPassword');
-    expect(errores).toHaveProperty('terminos');
     expect(errores).toHaveProperty('instrumento');
     expect(errores).not.toHaveProperty('nivel');
   });
-
+  
   it('PU-05: el checkout con retiro en tienda no exige dirección ni región', () => {
     // Arrange
     const datos = {
