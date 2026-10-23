@@ -40,6 +40,10 @@ function App() {
               {/* Rutas privadas: exigen sesión iniciada */}
               <Route element={<ProtectedRoute />}>
                 <Route path="/perfil" element={<Profile />} />
+              </Route>
+
+              {/* Ruta de administración: exige sesión y rol admin */}
+              <Route element={<ProtectedRoute soloAdmin />}>
                 <Route path="/panel" element={<Dashboard />} />
               </Route>
 

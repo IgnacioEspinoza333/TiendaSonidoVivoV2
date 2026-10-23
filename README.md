@@ -37,7 +37,17 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
     - claro/oscuro
     - agregar a favoritos (que salgan al principio del catalogo)
 
+
+# Cuentas de acceso
+
+| Rol | Usuario | Contraseña | Correo |
+|---|---|---|---|
+| Administrador | `admin` | `admin123` | admin@duocuc.cl |
+| Cliente | `cliente` | `cliente123` | cliente@gmail.com |
+
 ------------------
+
+
 
 # Instruccioes de la Evaluación:
 
