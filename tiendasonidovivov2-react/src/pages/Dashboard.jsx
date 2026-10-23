@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useProducts } from '../context/ProductsContext';
 import ProductForm from '../components/organisms/ProductForm';
@@ -10,14 +11,21 @@ import { nombreCompleto } from '../utils/userUtils';
 
 export default function Dashboard() {
   const { usuario } = useAuth();
-  const { productos, agregarProducto, eliminarProducto } = useProducts();
+  const { productos, agregarProducto, actualizarProducto, eliminarProducto } = useProducts();
+  const [productoEditando, setProductoEditando] = useState(null);
 
   const confirmarEliminar = (producto) => {
     if (window.confirm(`¿Eliminar "${producto.nombre}" del catálogo?`)) {
       eliminarProducto(producto.id);
+      // Si justo se estaba editando ese producto, se vuelve al formulario de creación
+      if (productoEditando?.id === producto.id) setProductoEditando(null);
     }
   };
 
+  const guardarCambios = (datos) => {
+    actualizarProducto(productoEditando.id, datos);
+    setProductoEditando(null);
+  };
   return (
     <section id="contenido-panel">
       <h2>Panel de Control</h2>
@@ -27,13 +35,19 @@ export default function Dashboard() {
 
       <div className="panel-layout">
         <div className="panel-tarjeta">
-          <h3>Nuevo producto</h3>
-          <ProductForm onCrear={agregarProducto} />
+          <h3>{productoEditando ? 'Editar producto' : 'Nuevo producto'}</h3>
+          <ProductForm
+            key={productoEditando?.id ?? 'nuevo'}
+            producto={productoEditando}
+            onCrear={agregarProducto}
+            onGuardar={guardarCambios}
+            onCancelar={() => setProductoEditando(null)}
+          />
         </div>
 
         <div className="panel-tarjeta">
           <h3>Catálogo actual <span className="panel-contador">({productos.length})</span></h3>
-          <ProductTable productos={productos} onEliminar={confirmarEliminar} />
+          <ProductTable productos={productos} onEditar={setProductoEditando} onEliminar={confirmarEliminar} />
         </div>
       </div>
     </section>

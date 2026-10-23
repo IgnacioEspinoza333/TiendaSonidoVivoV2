@@ -31,3 +31,20 @@ export const crearProducto = (datos, id) => ({
   descripcion: datos.descripcion.trim(),
   imagen: IMAGEN_POR_DEFECTO,
 });
+
+// Convierte un producto del catálogo en los valores del formulario (todo como texto)
+export const productoAFormulario = (producto) => ({
+  nombre: producto.nombre,
+  categoria: producto.categoria,
+  marca: producto.marca ?? '',
+  precio: String(precioANumero(producto.precio)),
+  stock: producto.stock != null ? String(producto.stock) : '',
+  descripcion: producto.descripcion ?? '',
+});
+
+// Aplica los datos del formulario a un producto existente, conservando su id e imagen
+export const actualizarDatosProducto = (original, datos) => ({
+  ...original,
+  ...crearProducto(datos, original.id),
+  imagen: original.imagen,
+});

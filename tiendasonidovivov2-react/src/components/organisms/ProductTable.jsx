@@ -1,7 +1,7 @@
 import ProductTableRow from '../molecules/ProductTableRow';
 
 // Tabla con todos los productos del catálogo (lectura y eliminación)
-export default function ProductTable({ productos, onEliminar }) {
+export default function ProductTable({ productos, onEditar, onEliminar }) {
   return (
     <div className="tabla-responsiva">
       <table className="tabla-carrito">
@@ -18,7 +18,7 @@ export default function ProductTable({ productos, onEliminar }) {
         </thead>
         <tbody>
           {productos.map((producto) => (
-            <ProductTableRow key={producto.id} producto={producto} onEliminar={onEliminar} />
+            <ProductTableRow key={producto.id} producto={producto} onEditar={onEditar} onEliminar={onEliminar} />
           ))}
         </tbody>
       </table>
