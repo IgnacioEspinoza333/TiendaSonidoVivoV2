@@ -24,6 +24,7 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Registro
   - Mi Perfil
   - Panel de Control (Admin)
+      - *Falta Migrar*
   - Carrito de Compras (Resumen de pago + Checkout).
   - ERROR 404
 
@@ -38,9 +39,13 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
 
 ## Tareas pendientes
 
+- [ ] Panel: editar productos (Update) y su test
+- [ ] Panel: revisar que cumpla el enunciado (imagen genérica, sesión en localStorage, acceso restringido)
 - [ ] Tema claro/oscuro: reemplazar ~150 colores fijos por variables CSS
 - [ ] Tema claro/oscuro: botón de cambio de tema en el Header
 - [ ] Tema claro/oscuro: guardar la elección en localStorage (`ThemeContext`)
+- [ ] Limpieza: borrar `OrderSummary.jsx` y estilos sin uso
+- [ ] Tests: `ProtectedRoute` y `ThemeContext`
 
 
 
@@ -48,7 +53,8 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
 
 - Terminar Trello
 - alternancia de tema claro/oscuro
-- Poner imágenes en el documento ers. Una vez esté listo el proyecto
+- agregar productos a favoritos (que salgan al principio del catalogo)
+- 
 ------------------
 Entregables
 

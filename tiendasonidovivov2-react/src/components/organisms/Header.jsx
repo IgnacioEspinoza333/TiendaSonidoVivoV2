@@ -2,15 +2,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import NavLink from '../atoms/NavLink';
-import ThemeToggle from '../atoms/ThemeToggle';
 import AuthButtons from '../molecules/AuthButtons';
+import ThemeToggleButton from '../atoms/ThemeToggleButton';
 
 export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const navigate = useNavigate();
   const { usuario, estaAutenticado, esAdmin, cerrarSesion } = useAuth();
-  const { esClaro, alternarTema } = useTheme();
+  const { esOscuro, alternarTema } = useTheme();
   
   const handleLogout = () => {
     cerrarSesion();
@@ -55,8 +55,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="acciones-encabezado">
-          <ThemeToggle esClaro={esClaro} onClick={alternarTema} />
+        {/* Botón de tema junto a los botones de sesión; en móvil quedan en la misma fila */}
+        <div className="menu-acciones">
+          <ThemeToggleButton esOscuro={esOscuro} onClick={alternarTema} />
           <AuthButtons isLogged={estaAutenticado} userName={usuario?.usuario} onLogout={handleLogout} />
         </div>
       </div>

@@ -3,6 +3,7 @@
    Paleta de colores, tipografías y transición reutilizadas en todo el sitio.
    ========================================================================== */
 :root {
+    color-scheme: dark;
     --color-primario: #d32f2f;
     --color-primario-hover: #b71c1c;
     --color-oscuro: #121212;
@@ -11,19 +12,44 @@
     --color-texto-atenuado: #a0a0a0;
     --color-borde: #333333;
     --color-fondo: #0a0a0a;
+
+    /* Colores que antes estaban fijos en cada archivo CSS (modo oscuro = valores originales) */
+    --color-titulo: #ffffff;                          /* títulos y texto de campos */
+    --color-borde-fuerte: #444444;                    /* bordes de campos y pestañas */
+    --color-borde-contraste: rgba(255, 255, 255, 0.4); /* borde de botones sobre fondo neutro */
+    --color-campo-fondo: #222222;                     /* fondo de inputs */
+    --color-campo-fondo-alt: #1a1a1a;                 /* fondo de inputs de login y panel */
+    --color-fondo-sutil: rgba(255, 255, 255, 0.05);   /* tarjetas y cajas translúcidas */
+    --color-fondo-sutil-hover: rgba(255, 255, 255, 0.1);
+    --color-error-texto: #ff6b6b;
+    --color-exito-texto: #2ecc71;
+    --color-whatsapp-texto: #25d366;
+
     --fuente-titulo: 'Montserrat', sans-serif;
     --fuente-cuerpo: 'Open Sans', sans-serif;
     --transicion: all 0.3s ease;
 }
 
-/* Variante de tema claro, activada agregando data-tema="claro" al <body> */
-[data-tema="claro"] {
+/* Modo claro: se activa con data-theme="light" en <html> y solo sobrescribe las variables */
+:root[data-theme="light"] {
+    color-scheme: light;
     --color-oscuro: #f5f5f5;
     --color-superficie: #ffffff;
     --color-texto: #212121;
     --color-texto-atenuado: #666666;
     --color-borde: #e0e0e0;
     --color-fondo: #fafafa;
+
+    --color-titulo: #111111;
+    --color-borde-fuerte: #bdbdbd;
+    --color-borde-contraste: rgba(0, 0, 0, 0.3);
+    --color-campo-fondo: #ffffff;
+    --color-campo-fondo-alt: #ffffff;
+    --color-fondo-sutil: rgba(0, 0, 0, 0.04);
+    --color-fondo-sutil-hover: rgba(0, 0, 0, 0.08);
+    --color-error-texto: #c0392b;
+    --color-exito-texto: #1e8449;
+    --color-whatsapp-texto: #0f7a3d;
 }
 
 /* Reset básico de márgenes/paddings y box-sizing consistente */
@@ -175,6 +201,12 @@ body {
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: var(--transicion);
+}
+#boton-tema:hover {
+    border-color: var(--color-primario);
 }
 
 /* --------------------------------------------------------------------
@@ -444,6 +476,11 @@ h2 {
     margin-top: 0.5rem;
     flex-wrap: wrap;
 }
+/* El hero siempre tiene fondo oscuro con imagen, así que su botón secundario va en blanco en ambos temas */
+.seccion-hero .cta-secundario {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
 
 /* Botón hamburguesa del menú móvil (oculto en escritorio) */
 #boton-menu {
@@ -487,7 +524,7 @@ h2 {
     background-color: var(--color-primario-hover);
 }
 #nav-nombre-usuario {
-    color: #2ecc71;
+    color: var(--color-exito-texto);
     font-size: 0.95rem;
     font-weight: 600;
     white-space: nowrap;
@@ -517,7 +554,7 @@ h2 {
         padding-top: 0.6rem;
         border-top: 1px solid var(--color-borde);
     }
-    .menu-auth-nav {
+    .menu-acciones {
         margin-left: auto;
     }
 }
@@ -539,9 +576,11 @@ h2 {
     .logo-texto {
         font-size: 1.3rem;
     }
-    .menu-auth-nav {
+    .menu-acciones {
         margin-left: 0;
         width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .nav-estado-sesion {
         justify-content: center;
@@ -619,4 +658,11 @@ h2 {
     font-weight: 600;
     background: transparent;
     border-radius: 4px;
+    color: var(--color-titulo);
+    border-color: var(--color-borde-contraste);
+}
+.btn-favorito.con-texto:hover,
+.btn-favorito.con-texto.favorito-activo {
+    color: var(--color-primario);
+    border-color: var(--color-primario);
 }
