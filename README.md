@@ -16,7 +16,7 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
 
 
 
-# Páginas (Faltan 2):
+# Páginas:
   - Index (Inicio)
   - Productos
   - Producto
