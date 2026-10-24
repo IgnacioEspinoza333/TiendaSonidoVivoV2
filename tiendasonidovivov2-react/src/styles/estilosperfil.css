@@ -48,7 +48,7 @@
 
 .perfil-nombre {
     margin: 0 0 0.2rem;
-    color: #fff;
+    color: var(--color-titulo);
     font-size: 1.4rem;
 }
 .perfil-usuario {
@@ -65,12 +65,12 @@
 }
 .insignia-admin {
     background: rgba(211, 47, 47, 0.2);
-    color: #ff6b6b;
+    color: var(--color-error-texto);
     border: 1px solid var(--color-primario, #d32f2f);
 }
 .insignia-cliente {
     background: rgba(46, 204, 113, 0.15);
-    color: #2ecc71;
+    color: var(--color-exito-texto);
     border: 1px solid #2ecc71;
 }
 
@@ -90,7 +90,7 @@
 }
 .campo-perfil-valor {
     margin: 0;
-    color: #fff;
+    color: var(--color-titulo);
     font-weight: 600;
     word-break: break-word;
 }

@@ -51,16 +51,16 @@
 .caja-auth .grupo-form select {
     width: 100%;
     padding: 0.8rem 1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--color-borde-fuerte);
     border-radius: 6px;
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--color-campo-fondo-alt);
+    color: var(--color-titulo);
     font-size: 0.95rem;
     font-family: inherit;
     transition: all 0.3s ease;
 }
 .caja-auth .grupo-form input::placeholder {
-    color: #777;
+    color: var(--color-texto-atenuado);
 }
 .caja-auth .grupo-form input:focus,
 .caja-auth .grupo-form select:focus {
@@ -69,8 +69,8 @@
     box-shadow: 0 0 5px rgba(211, 47, 47, 0.45);
 }
 .caja-auth .grupo-form select option {
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--color-campo-fondo-alt);
+    color: var(--color-titulo);
 }
 
 /* Estados de validación para selects y passwords */
@@ -188,13 +188,12 @@
 .caja-auth .grupo-form input[type="date"] {
     width: 100%;
     padding: 0.8rem 1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--color-borde-fuerte);
     border-radius: 6px;
-    background-color: #1a1a1a;
-    color: #fff;
+    background-color: var(--color-campo-fondo-alt);
+    color: var(--color-titulo);
     font-size: 0.95rem;
     font-family: inherit;
-    color-scheme: dark;
     transition: all 0.3s ease;
 }
 .caja-auth .grupo-form input[type="date"]:focus {

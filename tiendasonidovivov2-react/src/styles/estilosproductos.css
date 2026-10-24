@@ -7,6 +7,11 @@
    Cabecera del Catálogo (Hero con imagen de fondo)
    -------------------------------------------------------------------- */
 .catalogo-hero {
+    /* La cabecera siempre es oscura (imagen con overlay): aquí se fijan los valores del tema oscuro */
+    color-scheme: dark;
+    --color-texto: #e0e0e0;
+    --color-texto-atenuado: #a0a0a0;
+    --color-borde: #333333;
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
                 url('../img/musica.jfif') center/cover no-repeat;

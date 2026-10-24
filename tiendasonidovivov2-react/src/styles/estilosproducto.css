@@ -7,13 +7,13 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
-    color: #e0e0e0;
+    color: var(--color-texto);
 }
 
 /* Migas de pan (breadcrumbs) de navegación */
 .migas-de-pan {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--color-texto-atenuado);
     margin-bottom: 2rem;
 }
 .migas-de-pan a {
@@ -85,14 +85,14 @@
    Información del Producto (título, categoría, precio)
    -------------------------------------------------------------------- */
 .categoria-etiqueta {
-    color: #aaaaaa;
+    color: var(--color-texto-atenuado);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
 .titulo-producto {
     font-size: 2.2rem;
-    color: #fff;
+    color: var(--color-titulo);
     margin: 0.5rem 0 1rem;
 }
 .precio-contenedor {
@@ -106,14 +106,14 @@
 }
 .precio-iva {
     font-size: 0.9rem;
-    color: #888;
+    color: var(--color-texto-atenuado);
 }
 
 /* --------------------------------------------------------------------
    Selector de Cantidad y Total Calculado
    -------------------------------------------------------------------- */
 .selector-compra {
-    background-color: rgba(255,255,255,0.05);
+    background-color: var(--color-fondo-sutil);
     padding: 1.5rem;
     border-radius: 8px;
     margin: 1.5rem 0;
@@ -125,10 +125,10 @@
     width: 60px;
     padding: 0.5rem;
     margin-left: 0.5rem;
-    border: 1px solid #444;
+    border: 1px solid var(--color-borde-fuerte);
     border-radius: 4px;
-    background-color: #222;
-    color: #fff;
+    background-color: var(--color-campo-fondo);
+    color: var(--color-titulo);
     font-size: 1rem;
 }
 .total-calculado {
@@ -168,7 +168,7 @@
 /* Variante de color para el botón secundario de cotización por WhatsApp */
 .btn-verde {
     background-color: rgba(37, 211, 102, 0.1);
-    color: #25D366;
+    color: var(--color-whatsapp-texto);
     border: 2px solid #25D366;
 }
 .btn-verde:hover {
@@ -179,7 +179,7 @@
 .mensaje-oculto {
     display: none;
     text-align: center;
-    color: #25D366;
+    color: var(--color-whatsapp-texto);
     font-weight: 600;
 }
 
@@ -190,7 +190,7 @@
     margin-top: 1rem;
 }
 .pestañas-botones {
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--color-borde-fuerte);
     margin-bottom: 1rem;
     display: flex;
     gap: 1rem;
@@ -198,7 +198,7 @@
 .btn-pestaña {
     background: none;
     border: none;
-    color: #888;
+    color: var(--color-texto-atenuado);
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
@@ -227,7 +227,7 @@
 .btn-volver-catalogo {
     display: inline-block;
     margin-top: 15px;
-    color: #e0e0e0;
+    color: var(--color-texto);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -248,7 +248,7 @@
     background-color: #444;
 }
 .mensaje-confirmacion {
-    color: #25D366;
+    color: var(--color-whatsapp-texto);
     text-align: center;
     margin: 0;
 }
