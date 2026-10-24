@@ -24,7 +24,6 @@ PLAZO LIMITE DE ENTREGA, jueves 22 de octubre a las 23:55 hrs. No se aceptaran e
   - Registro
   - Mi Perfil
   - Panel de Control (Admin)
-      - *Falta Migrar*
   - Carrito de Compras (Resumen de pago + Checkout).
   - ERROR 404
 
