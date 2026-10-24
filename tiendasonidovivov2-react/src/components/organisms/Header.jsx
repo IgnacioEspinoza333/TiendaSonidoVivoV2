@@ -1,6 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import NavLink from '../atoms/NavLink';
+import ThemeToggle from '../atoms/ThemeToggle';
 import AuthButtons from '../molecules/AuthButtons';
 
 export default function Header() {
@@ -8,6 +10,7 @@ export default function Header() {
   const isHome = location.pathname === '/';
   const navigate = useNavigate();
   const { usuario, estaAutenticado, esAdmin, cerrarSesion } = useAuth();
+  const { esClaro, alternarTema } = useTheme();
   
   const handleLogout = () => {
     cerrarSesion();
@@ -52,7 +55,10 @@ export default function Header() {
           </ul>
         </nav>
 
-        <AuthButtons isLogged={estaAutenticado} userName={usuario?.usuario} onLogout={handleLogout} />
+        <div className="acciones-encabezado">
+          <ThemeToggle esClaro={esClaro} onClick={alternarTema} />
+          <AuthButtons isLogged={estaAutenticado} userName={usuario?.usuario} onLogout={handleLogout} />
+        </div>
       </div>
     </header>
   );

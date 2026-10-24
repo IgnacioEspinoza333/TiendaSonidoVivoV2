@@ -7,6 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+       <script>
+      // Aplica el tema guardado antes de que React cargue, para evitar un parpadeo
+      try {
+        if (localStorage.getItem('temaSonidoVivo') === 'claro') {
+          document.documentElement.setAttribute('data-tema', 'claro');
+        }
+      } catch (e) { /* sin localStorage: se queda el tema oscuro */ }
+    </script>
     <title>Sonido Vivo | Instrumentos y equipamiento musical</title>
   </head>
   <body>
